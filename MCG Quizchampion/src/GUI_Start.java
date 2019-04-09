@@ -12,6 +12,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import javax.swing.ButtonGroup;
 
 public class GUI_Start extends JFrame {
 
@@ -28,6 +29,7 @@ public class GUI_Start extends JFrame {
 	private JButton btnSpieler;
 	private JButton btnSpieler_1;
 	private JButton btnSpieler_2;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -69,26 +71,43 @@ public class GUI_Start extends JFrame {
 		contentPane.add(lblSpielerAnzahl);
 		
 		textFieldspielername1 = new JTextField();
-		textFieldspielername1.setBounds(673, 233, 96, 20);
+		textFieldspielername1.setBounds(682, 233, 96, 20);
 		contentPane.add(textFieldspielername1);
 		textFieldspielername1.setColumns(10);
 		
 		textFieldspielername2 = new JTextField();
-		textFieldspielername2.setBounds(673, 308, 96, 20);
+		textFieldspielername2.setBounds(682, 308, 96, 20);
 		contentPane.add(textFieldspielername2);
 		textFieldspielername2.setColumns(10);
 		
 		textFieldspielername3 = new JTextField();
-		textFieldspielername3.setBounds(673, 383, 96, 20);
+		textFieldspielername3.setBounds(682, 383, 96, 20);
 		contentPane.add(textFieldspielername3);
 		textFieldspielername3.setColumns(10);
 		
 		btnLaden = new JButton("Laden");
+		btnLaden.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnLaden.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnLaden.setBounds(34, 629, 143, 105);
 		contentPane.add(btnLaden);
 		
 		btnStart = new JButton("Start");
+		btnStart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hauptklasse.setSpielername1(textFieldspielername1.getText());
+				Hauptklasse.setSpielername2(textFieldspielername2.getText());
+				Hauptklasse.setSpielername3(textFieldspielername3.getText());
+				
+			}
+		
+		
+		
+		
+		
+		});
 		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnStart.setBounds(789, 629, 163, 105);
 		contentPane.add(btnStart);
@@ -104,19 +123,35 @@ public class GUI_Start extends JFrame {
 		contentPane.add(lblSeiSchlau);
 		
 		btnSpieler = new JButton("1 Spieler");
-		btnSpieler.setBounds(673, 201, 89, 23);
+		buttonGroup.add(btnSpieler);
+		btnSpieler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hauptklasse.setSpielerZahl(1);
+				
+				
+			}
+		});
+		btnSpieler.setBounds(683, 199, 95, 23);
 		contentPane.add(btnSpieler);
 		
 		btnSpieler_1 = new JButton("2 Spieler");
+		buttonGroup.add(btnSpieler_1);
 		btnSpieler_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Hauptklasse.setSpielerZahl(2);
 			}
 		});
-		btnSpieler_1.setBounds(683, 274, 75, 23);
+		btnSpieler_1.setBounds(683, 274, 95, 23);
 		contentPane.add(btnSpieler_1);
 		
 		btnSpieler_2 = new JButton("3 Spieler");
-		btnSpieler_2.setBounds(680, 349, 89, 23);
+		buttonGroup.add(btnSpieler_2);
+		btnSpieler_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hauptklasse.setSpielerZahl(3);
+			}
+		});
+		btnSpieler_2.setBounds(682, 349, 96, 23);
 		contentPane.add(btnSpieler_2);
 	}
 }
